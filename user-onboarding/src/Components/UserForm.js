@@ -16,7 +16,7 @@ function UserForm({ values, errors, touched, isSubmitting, status }) {
   return (
     <>
     <Form className="form-container">
-      <h1>Login Form</h1>
+      <h1 id="logo">Login Form</h1>
 
       {touched.name && errors.name && <p> {errors.name}</p>}
       <Field type="name" name="name" placeholder="Name" />
@@ -28,7 +28,7 @@ function UserForm({ values, errors, touched, isSubmitting, status }) {
       <Field type="password" name="password" placeholder="Password" />
 
 
-      <label>
+      <label class="tos">
         <Field className="checkbox" type="checkbox" name="tos" checked={values.tos} />
         <span>Accept Terms</span>
       </label>

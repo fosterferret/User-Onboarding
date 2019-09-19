@@ -4,7 +4,7 @@ import UserForm from './Components/UserForm'
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <UserForm/>
     </div>
   );
