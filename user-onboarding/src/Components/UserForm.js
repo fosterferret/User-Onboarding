@@ -72,6 +72,17 @@ export default withFormik({
     tos: Yup.boolean().oneOf([ true ], "You must agree to the Terms of Service before proceeding")
   }),
 
- 
+  handleSubmit(values, { resetForm, setSubmitting, setStatus }) { 
+    axios
+    .post('https://reqres.in/api/users', values)
+    .then(res => {
+      setStatus(res.data)
+      resetForm();
+      setSubmitting(false);
+    })
+    .catch(err => {
+      setSubmitting(false);
+    });
+}
 
 })(UserForm);
