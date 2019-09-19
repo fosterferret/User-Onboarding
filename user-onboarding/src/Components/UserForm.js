@@ -48,3 +48,30 @@ function UserForm({ values, errors, touched, isSubmitting, status }) {
   );
 }
 
+export default withFormik({
+  mapPropsToValues({ name, email, password, tos }) {
+    
+    return {
+      name: name || "",
+      email: email || "",
+      password: password || "",
+      tos: tos || false
+    };
+  },
+
+  validationSchema: Yup.object().shape({
+    name: Yup.string().required()
+      .min(3,"Surely your name isn't that short?")
+      .required("Your ame is required, dummy!"),
+    email: Yup.string()
+      .email("This is not a valid email")
+      .required("An email is required"),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters long")
+      .required("A password is required"),
+    tos: Yup.boolean().oneOf([ true ], "You must agree to the Terms of Service before proceeding")
+  }),
+
+ 
+
+})(UserForm);
